@@ -12,4 +12,4 @@ Execute in command shell. Must have python installed.
 python makebreak.py 5.26.21.xlsm
 ```
 
-![Output](output.jpg)
+![Output](output.JPG)

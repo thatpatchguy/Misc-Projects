@@ -9,7 +9,7 @@ def schedule_15(aim, index, shift):
     plus = True
     counter = .25
     ##While loop checks for the closest possible break to the goal
-    while np.isin(poss_15, aim).any() == False:
+    while np.isin(poss_15, aim).any() == False and counter < 2:
         if plus == True:
             aim = aim + counter
             plus = False
@@ -19,7 +19,7 @@ def schedule_15(aim, index, shift):
         counter += .25
     ##Sets specified break to the closest possible break
     hoursdf.loc[index, shift] = aim
-    ##Returns break to delete it from the poss_15 list
+    ##Returns break time to delete it from the poss_15 list
     return aim
 
 ##Function creation to schedule non-overlapping 15 minute breaks
@@ -28,7 +28,7 @@ def schedule_30(aim, index, shift):
     plus = True
     ogAim = aim
     counter = .25
-    while np.isin(poss_30, aim).any() == False:
+    while np.isin(poss_30, aim).any() == False and counter < 2:
         if plus == True:
             aim = aim + counter
             plus = False
@@ -40,7 +40,7 @@ def schedule_30(aim, index, shift):
     return aim
 
 ##This file takes one argument in the command line, being the path to the daily lineup
-book = openpyxl.load_workbook(sys.argv[1])
+book = openpyxl.load_workbook(sys.argv[1], data_only=True)
 
 ##Opens worksheet with lineup
 ws = book['MSA']
@@ -75,7 +75,7 @@ csdf["Shift End"] = ""
 for index, row in csdf.iterrows():
     temp = row["Start"].split(":")
     
-    if row["Start"][-1] == "P":
+    if row["Start"][-1] == "P" and int(temp[0]) != 12:
         hour = int(temp[0]) + 12
     else:
         hour = int(temp[0])

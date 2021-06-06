@@ -1,6 +1,6 @@
 # Break Scheduler
 
-At my job at REI our Sales leads spend 30-45 minutes every morning to create the break schedule so I figured I could create a tool to take the work out of it. 
+At my old job at REI our Sales leads spend 30-45 minutes every morning to create the break schedule so I figured I could create a tool to take the work out of it. 
 
 ## Use
 
